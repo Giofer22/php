@@ -27,31 +27,31 @@
                                     </div>
                                     <div class="col-md-10">
                                         <label for="nome" class="form-label">Cliente:</label>
-                                        <input type="text" name="nome" id="nome" class="form-control">
+                                        <input type="text" name="nome" id="nome" class="form-control" require>
                                     </div>
 
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-4">
                                         <label for="cpf" class="form-label">CPF:</label>
-                                        <input type="text" name="cpf" id="cpf" class="form-control" data-mask="000.000.000-00">
+                                        <input type="text" name="cpf" id="cpf" class="form-control" data-mask="000.000.000-00" require minlength="14">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="tel" class="form-label">Whatsapp:</label>
-                                        <input type="text" name="tel" id="tel" class="form-control" data-mask="(00) 00000-0000">
+                                        <input type="text" name="tel" id="tel" class="form-control" data-mask= "(00) 00000-0000">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="email" class="form-label">Email:</label>
-                                        <input type="email" name="email" id="email" class="form-control">
+                                        <input type="email" name="email" id="email" class="form-control" require>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                         <div class="card-footer text-end ">
-                            <button class="btn btn-outline-danger" type="button">
+                            <a class="btn btn-outline-danger" type="button" href="index.php">
                                 <i class="bi bi-x"></i> Cancelar
-                            </button>
+                            </a>
                             <button class="btn btn-success" type="submit">
                                 <i class="bi bi-check-all"></i> Enviar
                             </button>

@@ -1,25 +1,51 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>CRUD - MSQLI</title>
-</head>
+// verifica se informação vem
+if ($_POST) {
+    // pegar informações
+    $pk_cliente = trim($_POST["pk_cliente"]);
+    $nome = trim($_POST["nome"]);
+    $cpf = trim($_POST["cpf"]);
+    $tel = trim($_POST["tel"]);
+    $email = trim($_POST["email"]);
 
-<body>
+    // validar dados obrigaorios
+    if (empty($nome) || empty($cpf) || strlen($cpf) != 14 || empty($email)) {
+        echo
+        "<script>
+            alert('Falha na validação do formulário');
+            window.location='./';
+        </script>";
+        exit;
+    }
 
+    // conectar ao banco
+    include('../funcao_conexao_msqli.php');
 
+    // sintax sql que o php envia pro mysql
+    $sql = "
+    INSERT INTO clientes(nome, cpf, whatsapp, email) VALUES
+    ('$nome', '$cpf','$tel', '$email')
+    ";
 
+    // enviar pro mysql
+    $query = mysqli_query($conn, $sql);
 
-
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    // verifica se cadastrou
+    if ($query) {
+        $msg = "registro salvo";
+    } else {
+        $msg = "error: " . mysqli_error($conn);
+    }
+    echo "
+    <script>
+        alert('$msg');
+        window.location='./';
+    </script>
+    ";
+    exit;
+} else {
+    // redireciona para a pagina principal
+    header("location: ./");
+    exit;
+}

@@ -15,10 +15,10 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        Lista de ordem de serviço
-                        <button class="btn btn-primary float-end">
-                        Adicionar <i class="i bi-plus"></i>
-                        </button>
+                        Lista de clientes
+                        <a class="btn btn-primary float-end" href="form.php">
+                            Adicionar <i class="i bi-plus"></i>
+                        </a>
                     </div>
                     <div class="card-body ">
                         <table class="table table-hover  table-responsive align-middle">
@@ -26,17 +26,49 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Cliente</th>
-                                    <th>Serviços</th>
-                                    <th>R$ Valor</th>
+                                    <th>CPF</th>
+                                    <th>Whatsapp</th>
+                                    <th>Email</th>
                                     <th>Opções</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                include('../funcao_conexao_msqli.php');
+                                $sql = "
+                                SELECT pk_cliente, nome, cpf, whatsapp, email
+                                FROM clientes
+                                ORDER BY nome
+                                ";
+
+                                $query = mysqli_query($conn, $sql);
+
+                                // verificar se encontrou os registros
+                                if (mysqli_num_rows($query) > 0) {
+                                    // laço para listar item a item
+                                    while ($row = mysqli_fetch_object($query)) {
+                                        echo '
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <button class="btn btn-info btn-sm "><i class="bi bi-pencil-square"></i></button>
+                                                <button class="btn btn-danger btn-sm "><i class="bi bi-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        ';
+                                    }
+                                }
+                                ?>
                                 <tr>
                                     <td>1</td>
                                     <td>Giovanni</td>
-                                    <td>Manutenção</td>
-                                    <td>R$150</td>
+                                    <td>123.123.123-12</td>
+                                    <td>(12)99999-9999</td>
+                                    <td>email@email.com</td>
                                     <td>
                                         <button class="btn btn-info btn-sm "><i class="bi bi-pencil-square"></i></button>
                                         <button class="btn btn-danger btn-sm "><i class="bi bi-trash"></i></button>
@@ -47,6 +79,7 @@
                                     <td>otra pessoa</td>
                                     <td>algo</td>
                                     <td>R$8000</td>
+                                    <td>email@email.com</td>
                                     <td>
                                         <button class="btn btn-info btn-sm "><i class="bi bi-pencil-square"></i></button>
                                         <button class="btn btn-danger btn-sm "><i class="bi bi-trash"></i></button>
