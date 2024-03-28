@@ -1,3 +1,41 @@
+<?php
+$pk_cliente = "";
+$nome = "";
+$cpf = "";
+$whatsapp = "";
+$email = "";
+
+// veririfca se a variavel existe
+if (isset($_GET['ref'])) {
+    $pk_cliente = base64_decode(trim($_GET['ref']));
+    include('../funcao_conexao_msqli.php');
+    $sql = "
+        SELECT *
+        FROM clientes
+        WHERE pk_cliente = $pk_cliente
+        ";
+    $query = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($query) > 0) {
+        $row = mysqli_fetch_object($query);
+        $nome = $row->NOME;
+        $cpf = $row->CPF;
+        $whatsapp = $row->WHATSAPP;
+        $email = $row->EMAIL;
+    } else {
+        echo "
+        <script>
+        alert('Registro não encontrado');
+        window.location='./';
+        </script>
+        ";
+        exit;
+    }
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -23,26 +61,26 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <label for="pk_cliente" class="form-label">ID:</label>
-                                        <input readonly type="number" name="pk_cliente" id="pk_cliente" class="form-control ">
+                                        <input value="<?php echo $pk_cliente ?>" readonly type="number" name="pk_cliente" id="pk_cliente" class="form-control ">
                                     </div>
                                     <div class="col-md-10">
                                         <label for="nome" class="form-label">Cliente:</label>
-                                        <input type="text" name="nome" id="nome" class="form-control" require>
+                                        <input value="<?php echo $nome ?>" type="text" name="nome" id="nome" class="form-control" require>
                                     </div>
 
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-4">
                                         <label for="cpf" class="form-label">CPF:</label>
-                                        <input type="text" name="cpf" id="cpf" class="form-control" data-mask="000.000.000-00" require minlength="14">
+                                        <input value="<?php echo $cpf ?>" type="text" name="cpf" id="cpf" class="form-control" data-mask="000.000.000-00" require minlength="14">
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="tel" class="form-label">Whatsapp:</label>
-                                        <input type="text" name="tel" id="tel" class="form-control" data-mask= "(00) 00000-0000">
+                                        <label for="whatsapp" class="form-label">Whatsapp:</label>
+                                        <input value="<?php echo $whatsapp ?>" type="text" name="whatsapp" id="whatsapp" class="form-control" data-mask="(00) 00000-0000">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="email" class="form-label">Email:</label>
-                                        <input type="email" name="email" id="email" class="form-control" require>
+                                        <input value="<?php echo $email ?>" type="email" name="email" id="email" class="form-control" require>
                                     </div>
                                 </div>
                             </div>

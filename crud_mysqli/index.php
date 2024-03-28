@@ -24,12 +24,12 @@
                         <table class="table table-hover  table-responsive align-middle">
                             <thead class="table-secondary">
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Cliente</th>
-                                    <th>CPF</th>
-                                    <th>Whatsapp</th>
-                                    <th>Email</th>
-                                    <th>Opções</th>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Cliente</th>
+                                    <th class="text-center">CPF</th>
+                                    <th class="text-center">Whatsapp</th>
+                                    <th class="text-center">Email</th>
+                                    <th class="text-center">Opções</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,42 +49,23 @@
                                     while ($row = mysqli_fetch_object($query)) {
                                         echo '
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                <button class="btn btn-info btn-sm "><i class="bi bi-pencil-square"></i></button>
-                                                <button class="btn btn-danger btn-sm "><i class="bi bi-trash"></i></button>
+                                            <td class="text-center">' . $row->pk_cliente . '</td>
+                                            <td class="">' . $row->nome . '</td>
+                                            <td class="text-center">' . $row->cpf . '</td>
+                                            <td class="text-center">' . $row->whatsapp . '</td>
+                                            <td class="text-center">' . $row->email . '</td>
+                                            <td class="text-center">
+                                                <a 
+                                                href="form.php?ref=' . base64_encode($row->pk_cliente) . '" class="btn btn-info btn-sm "><i class="bi bi-pencil-square"></i></a>
+                                                <a onclick= "if(confirm(\'Deseja realmente remover este registro? \'))
+                                                {window.location=\'remover.php?ref' . base64_encode($row->pk_cliente) . '\'} "
+                                                 href="remover.php?ref=' . base64_encode($row->pk_cliente) . '" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
                                             </td>
                                         </tr>
                                         ';
                                     }
                                 }
                                 ?>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Giovanni</td>
-                                    <td>123.123.123-12</td>
-                                    <td>(12)99999-9999</td>
-                                    <td>email@email.com</td>
-                                    <td>
-                                        <button class="btn btn-info btn-sm "><i class="bi bi-pencil-square"></i></button>
-                                        <button class="btn btn-danger btn-sm "><i class="bi bi-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>otra pessoa</td>
-                                    <td>algo</td>
-                                    <td>R$8000</td>
-                                    <td>email@email.com</td>
-                                    <td>
-                                        <button class="btn btn-info btn-sm "><i class="bi bi-pencil-square"></i></button>
-                                        <button class="btn btn-danger btn-sm "><i class="bi bi-trash"></i></button>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>

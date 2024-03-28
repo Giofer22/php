@@ -6,7 +6,7 @@ if ($_POST) {
     $pk_cliente = trim($_POST["pk_cliente"]);
     $nome = trim($_POST["nome"]);
     $cpf = trim($_POST["cpf"]);
-    $tel = trim($_POST["tel"]);
+    $whatsapp = trim($_POST["whatsapp"]);
     $email = trim($_POST["email"]);
 
     // validar dados obrigaorios
@@ -23,10 +23,21 @@ if ($_POST) {
     include('../funcao_conexao_msqli.php');
 
     // sintax sql que o php envia pro mysql
+    if($pk_cliente > 0){
+        $sql = "
+        UPDATE clientes SET
+        nome = '$nome',
+        cpf = '$cpf',
+        whatsapp = '$whatsapp',
+        email = '$email'
+        WHERE pk_cliente = '$pk_cliente'
+        ";
+    }else{
     $sql = "
     INSERT INTO clientes(nome, cpf, whatsapp, email) VALUES
-    ('$nome', '$cpf','$tel', '$email')
+    ('$nome', '$cpf','$whatsapp', '$email')
     ";
+    }
 
     // enviar pro mysql
     $query = mysqli_query($conn, $sql);
