@@ -1,4 +1,6 @@
 <?php
+include("../verificar_aut.php");
+
 $pk_cliente = "";
 $nome = "";
 $cpf = "";

@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row justify-content-center align-content-center ">
             <div class="col-4">
-                <form method="post">
+                <form method="post" action="validar_login.php">
                     <div class="card">
                         <div class="card-header">
                             Tela login
@@ -25,16 +25,16 @@
                         <div class="card-body">
                             <div class="mb-3">
                                 <lable class="form-label" for="email">Email</lable>
-                                <input type="text" class="form-control" name="email">
+                                <input type="email" class="form-control" name="email" required>
                             </div>
                             <div class="mb-3">
                                 <lable class="form-label" for="senha">Senha</lable>
-                                <input type="password" class="form-control" name="senha">
+                                <input type="password" class="form-control" name="senha" required>
                             </div>
 
 
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer text-end">
                             <button type="submit" class=" btn btn-primary">Entrar</button>
                         </div>
                     </div>

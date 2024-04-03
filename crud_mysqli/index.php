@@ -1,3 +1,7 @@
+<?php
+include("../verificar_aut.php");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -10,6 +14,23 @@
 </head>
 
 <body>
+    <header class="p-3 mb-3 border-bottom bg-light ">
+        <div class="container">
+            <div class="row">
+                <div class="col-1">
+                    <i class="bi bi-bootstrap fs-2"></i>
+                </div>
+                <div class="col text-end ">
+                    <a href="../logout.php" class="btn btn-dark">
+                        Sair
+                        <i class="bi bi-box-arrow-rigth"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
     <div class="container mt-3">
         <div class="row">
             <div class="col">

@@ -1,5 +1,5 @@
 <?php
-
+include("../verificar_aut.php");
 // verifica se informação vem
 if ($_POST) {
     // pegar informações
@@ -23,7 +23,7 @@ if ($_POST) {
     include('../funcao_conexao_msqli.php');
 
     // sintax sql que o php envia pro mysql
-    if($pk_cliente > 0){
+    if ($pk_cliente > 0) {
         $sql = "
         UPDATE clientes SET
         nome = '$nome',
@@ -32,8 +32,8 @@ if ($_POST) {
         email = '$email'
         WHERE pk_cliente = '$pk_cliente'
         ";
-    }else{
-    $sql = "
+    } else {
+        $sql = "
     INSERT INTO clientes(nome, cpf, whatsapp, email) VALUES
     ('$nome', '$cpf','$whatsapp', '$email')
     ";
