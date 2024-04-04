@@ -23,12 +23,20 @@ if ($_POST) {
         $query = mysqli_query($conn, $sql);
 
         if(mysqli_num_rows($query) > 0){
+            
+            // organizar dados do banco como objetos
+            $row = mysqli_fetch_object($querry);
+
+
 
             // criar sessão para variavel global
             session_start();
 
             // declara variavel informando se o usuario está autenticado
             $_SESSION["autenticado"] = true;
+            $_SESSION["pk_usuario"] = $row->pk_usuario;
+            $_SESSION["nome_usuario"] = $row->nome;
+            $_SESSION["tempo_login"] = time();
 
             header('location: ./crud_mysqli');
             exit;
