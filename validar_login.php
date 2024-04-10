@@ -25,7 +25,7 @@ if ($_POST) {
         if(mysqli_num_rows($query) > 0){
             
             // organizar dados do banco como objetos
-            $row = mysqli_fetch_object($querry);
+            $row = mysqli_fetch_object($query);
 
 
 

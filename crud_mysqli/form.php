@@ -67,22 +67,22 @@ if (isset($_GET['ref'])) {
                                     </div>
                                     <div class="col-md-10">
                                         <label for="nome" class="form-label">Cliente:</label>
-                                        <input value="<?php echo $nome ?>" type="text" name="nome" id="nome" class="form-control" require>
+                                        <input value="<?php echo $nome ?>" type="text" name="nome" id="nome" class="form-control" required>
                                     </div>
 
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-4">
                                         <label for="cpf" class="form-label">CPF:</label>
-                                        <input value="<?php echo $cpf ?>" type="text" name="cpf" id="cpf" class="form-control" data-mask="000.000.000-00" require minlength="14">
+                                        <input value="<?php echo $cpf ?>" type="text" name="cpf" id="cpf" class="form-control" data-mask="000.000.000-00" required minlength="14">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="whatsapp" class="form-label">Whatsapp:</label>
-                                        <input value="<?php echo $whatsapp ?>" type="text" name="whatsapp" id="whatsapp" class="form-control" data-mask="(00) 00000-0000">
+                                        <input value="<?php echo $whatsapp ?>" type="text" name="whatsapp" id="whatsapp" class="form-control" data-mask="(00) 00000-0000" required minlength="15">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="email" class="form-label">Email:</label>
-                                        <input value="<?php echo $email ?>" type="email" name="email" id="email" class="form-control" require>
+                                        <input value="<?php echo $email ?>" type="email" name="email" id="email" class="form-control" required>
                                     </div>
                                 </div>
                             </div>

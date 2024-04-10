@@ -10,7 +10,7 @@ if ($_SESSION["autenticado"] != true) {
 } else {
 
     // segundos
-    $tempo_limite = 10;
+    $tempo_limite = 40;
     $tempo_atual = time();
 
     // verifica tempo inativo 
