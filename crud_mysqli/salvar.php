@@ -39,8 +39,22 @@ if ($_POST) {
     ";
     }
 
-    // enviar pro mysql
-    $query = mysqli_query($conn, $sql);
+    try {
+        // enviar pro mysql
+        $query = mysqli_query($conn, $sql);
+    } catch (Exception $e) {
+        echo "Error:  $e" . mysqli_errno($conn);
+        if (mysqli_errno($conn) == 1062) {
+            $msg = "Campo CPF, e-mail e/ou Whatsapp ja foi cadastrado";
+        }
+        echo "
+        <script>
+            alert('$msg');
+            window.location='./';
+        </script>
+        ";
+        exit;
+    }
 
     // verifica se cadastrou
     if ($query) {

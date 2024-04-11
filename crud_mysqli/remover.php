@@ -10,7 +10,23 @@ if(isset($_GET['ref'])){
         WHERE pk_cliente = '$pk_cliente'
     ";
 
-    $query = mysqli_query($conn, $sql);
+    try {
+        // enviar pro mysql
+        $query = mysqli_query($conn, $sql);
+    } catch (Exception $e) {
+        echo "Error: " . mysqli_errno($conn);
+        if (mysqli_errno($conn) == 1451) {
+            $msg = "Não é possivel remover, existe uma Ordem de Serviço cadastrada.";
+        }
+        echo "
+        <script>
+            alert('$msg');
+            window.location='./';
+        </script>
+        ";
+        exit;
+    }
+
 
     if ($query) {
         $msg = "registro removido";
